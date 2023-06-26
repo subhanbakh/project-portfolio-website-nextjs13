@@ -1,27 +1,15 @@
 "use client";
 
-import React, { useEffect } from "react";
+import { useSectionInView } from "@/lib/hooks";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useActiveSectionContext } from "@/context/active-section-context";
 
 export default function About() {
-  const { ref, inView } = useInView({
-    threshold: 0.9,
-  });
-  const { activeSection, setActiveSection, timeOfLastClick } =
-    useActiveSectionContext();
-
-  useEffect(() => {
-    if (inView && Date.now() - timeOfLastClick > 1000) {
-      setActiveSection("About");
-    }
-  }, [inView, timeOfLastClick, setActiveSection]);
+  const { ref } = useSectionInView("About");
 
   return (
     <motion.section
       id="about"
-      className="mt-24 sm:mt-0 flex flex-col leading-8 m-auto text-center scroll-mt-28 max-w-[45rem] mb-28 sm:mb-36"
+      className="mb-28 max-w-[45rem] scroll-mt-28 text-center leading-8 sm:mb-40"
       initial={{
         opacity: 0,
         y: 100,
@@ -35,10 +23,10 @@ export default function About() {
       }}
       ref={ref}
     >
-      <h2 className="text-3xl text-gray-950 font-medium dark:text-white">
+      <h2 className="text-3xl font-medium text-gray-950 dark:text-white">
         About Me
       </h2>
-      <p className="mt-8 mb-3 dark:text-white/80 px-4">
+      <p className="mb-3 mt-8 px-4 dark:text-white/80">
         After graduating with a degree in{" "}
         <span className="font-medium">Accounting</span>, I decided to pursue my
         passion for programming. I enrolled in a coding bootcamp and learned{" "}
@@ -55,7 +43,7 @@ export default function About() {
         <span className="font-medium">full-time position</span> as a software
         developer.
       </p>
-      <p className="dark:text-white/80 px-4">
+      <p className="px-4 dark:text-white/80">
         <span className="italic">When I'm not coding</span>, I enjoy playing
         video games, watching movies, and playing with my dog. I also enjoy{" "}
         <span className="font-medium">learning new things</span>. I am currently

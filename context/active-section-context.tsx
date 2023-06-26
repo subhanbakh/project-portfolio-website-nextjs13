@@ -4,17 +4,10 @@ import {
   createContext,
   useContext,
   useState,
-  Dispatch,
-  SetStateAction,
+  type Dispatch,
+  type SetStateAction,
 } from "react";
-
-export type Section =
-  | "Home"
-  | "About"
-  | "Projects"
-  | "Skills"
-  | "Experience"
-  | "Contact";
+import type { Section } from "@/lib/types";
 
 type ActiveSectionContextType = {
   activeSection: Section;
@@ -23,7 +16,7 @@ type ActiveSectionContextType = {
   setTimeOfLastClick: Dispatch<SetStateAction<number>>;
 };
 
-type ProviderProps = {
+type ActiveSectionContextProviderProps = {
   children: React.ReactNode;
 };
 
@@ -31,7 +24,9 @@ const ActiveSectionContext = createContext<ActiveSectionContextType | null>(
   null
 );
 
-export const ActiveSectionContextProvider = ({ children }: ProviderProps) => {
+function ActiveSectionContextProvider({
+  children,
+}: ActiveSectionContextProviderProps) {
   const [activeSection, setActiveSection] = useState<Section>("Home");
   const [timeOfLastClick, setTimeOfLastClick] = useState(0); // we need to keep track of this to disable observer temporarily when user clicks on nav
 
@@ -47,16 +42,18 @@ export const ActiveSectionContextProvider = ({ children }: ProviderProps) => {
       {children}
     </ActiveSectionContext.Provider>
   );
-};
+}
 
-export const useActiveSectionContext = () => {
+function useActiveSectionContext() {
   const context = useContext(ActiveSectionContext);
 
   if (context === null) {
     throw new Error(
-      "useActiveSectionContext must be used within a ActiveSectionContextProvider"
+      "useActiveSectionContext must be used within an ActiveSectionContextProvider"
     );
   }
 
   return context;
-};
+}
+
+export { ActiveSectionContextProvider, useActiveSectionContext };

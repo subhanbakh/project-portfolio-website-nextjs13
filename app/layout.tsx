@@ -1,11 +1,11 @@
-import Header from "@/components/header";
 import "./globals.css";
-import { Inter } from "next/font/google";
 import Footer from "@/components/footer";
-import { ActiveSectionContextProvider } from "@/context/active-section-context";
-import { Toaster } from "react-hot-toast";
+import Header from "@/components/header";
 import ThemeSwitch from "@/components/theme-switch";
+import { ActiveSectionContextProvider } from "@/context/active-section-context";
 import { ThemeContextProvider } from "@/context/theme-context";
+import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,19 +20,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="!scroll-smooth ">
+    <html lang="en" className="!scroll-smooth">
       <body
-        className={`${inter.className} text-gray-950 bg-gray-50 dark:bg-gray-950 pt-28 sm:pt-36 relative transition-all
-        dark:text-gray-50 dark:bg-opacity-90 dark:text-opacity-90`}
+        className={`${inter.className} relative bg-gray-50 pt-28 text-gray-950 transition-all dark:bg-gray-950 dark:bg-opacity-90 dark:text-gray-50 dark:text-opacity-90 sm:pt-36`}
       >
-        <div
-          className={`bg-[#fbe2e3] rounded-full blur-[10rem] -z-10 h-[500px] w-[500px] sm:w-[1100px] absolute top-[-6rem] right-[11rem]
-          dark:bg-[#946263]`}
-        ></div>
-        <div
-          className={`bg-[#dbd7fb] rounded-full blur-[10rem] -z-10 h-[500px] w-[800px] sm:w-[1100px] absolute top-[-1rem] left-[-35rem] sm:left-[-30rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem]
-        dark:bg-[#676394]`}
-        ></div>
+        <div className="absolute right-[11rem] top-[-6rem] -z-10 h-[31.25rem] w-[31.25rem] rounded-full bg-[#fbe2e3] blur-[10rem] dark:bg-[#946263] sm:w-[68.75rem]"></div>
+        <div className="absolute left-[-35rem] top-[-1rem] -z-10 h-[31.25rem] w-[50rem] rounded-full bg-[#dbd7fb] blur-[10rem] dark:bg-[#676394] sm:left-[-30rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem]"></div>
 
         <ThemeContextProvider>
           <ActiveSectionContextProvider>

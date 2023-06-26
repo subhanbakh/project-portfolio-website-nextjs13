@@ -1,37 +1,26 @@
 "use client";
 
-import Image from "next/image";
-import React from "react";
-import photo from "@/public/photo.avif";
-import { BsArrowRight, BsLinkedin } from "react-icons/bs";
-import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare } from "react-icons/fa";
+import { useSectionInView } from "@/lib/hooks";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
-import { useInView } from "react-intersection-observer";
-import { useActiveSectionContext } from "@/context/active-section-context";
-import { useEffect } from "react";
+import React from "react";
+import { BsArrowRight, BsLinkedin } from "react-icons/bs";
+import { FaGithubSquare } from "react-icons/fa";
+import { HiDownload } from "react-icons/hi";
 
 export default function Intro() {
+  const { ref, setActiveSection, setTimeOfLastClick } = useSectionInView(
+    "Home",
+    0.9
+  );
   const { scrollYProgress } = useScroll();
   const size = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  const { ref, inView, entry } = useInView({
-    threshold: 0.75,
-  });
-  const { activeSection, setActiveSection, setTimeOfLastClick } =
-    useActiveSectionContext();
-
-  useEffect(() => {
-    if (inView) {
-      setActiveSection("Home");
-    }
-  }, [inView, setActiveSection]);
 
   return (
     <section
       id="home"
-      className="m-auto max-w-[50rem] scroll-mt-[100rem] text-center"
+      className="mb-28 max-w-[50rem] scroll-mt-[100rem] text-center sm:mb-0"
       ref={ref}
     >
       <div className="flex items-center justify-center gap-5">
@@ -54,10 +43,11 @@ export default function Intro() {
             }}
           >
             <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=368&h=368&q=100"
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=368&h=368&q=100"
               width="192"
               height="192"
-              quality="90"
+              quality="95"
+              priority={true}
               alt="Avatar"
               className="h-24 w-24 rounded-full border-[0.35rem] border-white object-cover shadow-xl"
             />
@@ -130,29 +120,26 @@ export default function Intro() {
         <a
           href="/CV.pdf"
           download
-          className="group flex items-center gap-2 rounded-full border border-black/10 bg-white px-7 py-3 outline-none transition hover:scale-110 focus:scale-110 active:scale-105 
-          dark:bg-white/10
-          "
+          className="group flex items-center gap-2 rounded-full border border-black/10 bg-white px-7 py-3 outline-none transition hover:scale-110 focus:scale-110 active:scale-105 dark:bg-white/10"
         >
           Download CV
           <HiDownload className="opacity-60 transition group-hover:translate-y-1" />
         </a>
-        <div className="flex gap-2">
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            className="flex items-center rounded-full border border-black/10 bg-white p-4 text-gray-700 outline-none transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] focus:text-gray-950 active:scale-105 dark:bg-white/10 dark:text-white/60"
-          >
-            <BsLinkedin />
-          </a>
-          <a
-            href="https://github.com"
-            target="_blank"
-            className="flex items-center rounded-full border border-black/10 bg-white p-4 text-[1.35rem] text-gray-700 outline-none transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] focus:text-gray-950 active:scale-105 dark:bg-white/10 dark:text-white/60"
-          >
-            <FaGithubSquare />
-          </a>
-        </div>
+
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          className="flex items-center rounded-full border border-black/10 bg-white p-4 text-gray-700 outline-none transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] focus:text-gray-950 active:scale-105 dark:bg-white/10 dark:text-white/60"
+        >
+          <BsLinkedin />
+        </a>
+        <a
+          href="https://github.com"
+          target="_blank"
+          className="flex items-center rounded-full border border-black/10 bg-white p-4 text-[1.35rem] text-gray-700 outline-none transition hover:scale-[1.15] hover:text-gray-950 focus:scale-[1.15] focus:text-gray-950 active:scale-105 dark:bg-white/10 dark:text-white/60"
+        >
+          <FaGithubSquare />
+        </a>
       </motion.div>
     </section>
   );

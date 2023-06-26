@@ -1,5 +1,4 @@
-import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 import React from "react";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { FaPaperPlane } from "react-icons/fa";
@@ -10,8 +9,8 @@ export default function FormSubmitButton() {
   return (
     <button
       type="submit"
-      className={clsx(
-        "group bg-gray-900 self-start dark:bg-opacity-10 dark:bg-white text-white w-[8rem] h-[3rem] rounded-full flex items-center disabled:bg-opacity-75 disabled:scale-100 justify-center gap-2 transition-all active:scale-105 focus:bg-gray-950 focus:scale-110 outline-none hover:bg-gray-950 hover:scale-110",
+      className={cn(
+        "group flex h-[3rem] w-[8rem] items-center justify-center gap-2 self-start rounded-full bg-gray-900 text-white outline-none transition-all hover:scale-110 hover:bg-gray-950 focus:scale-110 focus:bg-gray-950 active:scale-105 disabled:scale-100 disabled:bg-opacity-75 dark:bg-white dark:bg-opacity-10",
         {
           "opacity-65": pending,
         }
@@ -19,11 +18,11 @@ export default function FormSubmitButton() {
       disabled={pending}
     >
       {pending ? (
-        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+        <div className="h-5 w-5 animate-spin rounded-full border-b-2 border-white"></div>
       ) : (
         <>
           Submit{" "}
-          <FaPaperPlane className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-all opacity-70 text-xs" />
+          <FaPaperPlane className="text-xs opacity-70 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" />
         </>
       )}
     </button>
