@@ -1,11 +1,11 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import React, { useRef } from "react";
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { projectsData } from "@/lib/data";
-import { cn, isEven } from "@/lib/utils";
 import { useSectionInView } from "@/lib/hooks";
+import { cn, isEven } from "@/lib/utils";
 
 export default function Projects() {
   const { ref } = useSectionInView("Projects");

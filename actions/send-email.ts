@@ -1,33 +1,11 @@
 "use server";
 
-import ContactFormEmail from "@/email/contact-form-email";
 import React from "react";
 import { Resend } from "resend";
+import ContactFormEmail from "@/email/contact-form-email";
+import { getErrorMessage, validateString } from "@/lib/utils";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-
-const validateString = (data: unknown, maxLength: number) => {
-  if (!data || typeof data !== "string" || data.length > maxLength) {
-    return false;
-  }
-  return true;
-};
-
-const getErrorMessage = (e: unknown): string => {
-  let message: string;
-
-  if (e instanceof Error) {
-    message = e.message;
-  } else if (e && typeof e === "object" && "message" in e) {
-    message = String(e.message);
-  } else if (typeof e === "string") {
-    message = e;
-  } else {
-    message = "Something went wrong";
-  }
-
-  return message;
-};
 
 export async function sendEmail(formData: FormData) {
   const message = formData.get("message");

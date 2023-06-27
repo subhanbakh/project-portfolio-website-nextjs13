@@ -1,9 +1,9 @@
 "use client";
 
-import { useActiveSectionContext } from "@/context/active-section-context";
-import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
+import { useActiveSectionContext } from "@/context/active-section-context";
 import { skillsData } from "@/lib/data";
 
 const fadeInAnimationVariants = {

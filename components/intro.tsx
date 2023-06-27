@@ -1,13 +1,13 @@
 "use client";
 
-import { useSectionInView } from "@/lib/hooks";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import { BsArrowRight, BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useSectionInView } from "@/lib/hooks";
 
 export default function Intro() {
   const { ref, setActiveSection, setTimeOfLastClick } = useSectionInView(

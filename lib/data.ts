@@ -1,12 +1,12 @@
+import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import corpcommentImg from "@/public/corpcomment.png";
 import rmtdevImg from "@/public/rmtdev.png";
 import wordanalyticsImg from "@/public/wordanalytics.png";
-import React from "react";
 
-const links = [
+export const links = [
   {
     name: "Home",
     hash: "#home",
@@ -33,7 +33,7 @@ const links = [
   },
 ] as const;
 
-const experienceItems = [
+export const experiencesData = [
   {
     title: "Graduated bootcamp",
     location: "Miami, FL",
@@ -60,7 +60,7 @@ const experienceItems = [
   },
 ] as const;
 
-const projectsData = [
+export const projectsData = [
   {
     title: "CorpComment",
     description:
@@ -84,7 +84,7 @@ const projectsData = [
   },
 ] as const;
 
-const skillsData = [
+export const skillsData = [
   "HTML",
   "CSS",
   "JavaScript",
@@ -105,5 +105,3 @@ const skillsData = [
   "Django",
   "Framer Motion",
 ] as const;
-
-export { links, experienceItems, projectsData, skillsData };

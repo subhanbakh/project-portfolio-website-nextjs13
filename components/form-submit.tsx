@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
 import React from "react";
 import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import { FaPaperPlane } from "react-icons/fa";
+import { cn } from "@/lib/utils";
 
 export default function FormSubmitButton() {
   const { pending } = useFormStatus();

@@ -3,11 +3,11 @@ import {
   Container,
   Head,
   Heading,
-  Html,
-  Section,
-  Preview,
-  Text,
   Hr,
+  Html,
+  Preview,
+  Section,
+  Text,
 } from "@react-email/components";
 import { Tailwind } from "@react-email/tailwind";
 
@@ -27,7 +27,7 @@ export default function ContactFormEmail({
       <Tailwind>
         <Body className="bg-gray-100 text-black">
           <Container>
-            <Section className="bg-white border border-opacity-10 my-10 px-10 rounded-md py-4">
+            <Section className="bg-white border border-opacity-10 my-10 px-10 py-4 rounded-md">
               <Heading className="leading-tight">
                 You received the following message from the contact form
               </Heading>
